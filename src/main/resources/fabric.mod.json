@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "adaptiveperf",
+  "version": "${version}",
+  "name": "Adaptive Performance",
+  "description": "Автоматично підлаштовує дальність промальовки та частинки під FPS, щоб гра не просідала.",
+  "authors": ["Me"],
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": ["com.example.adaptiveperf.AdaptivePerfClient"]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
