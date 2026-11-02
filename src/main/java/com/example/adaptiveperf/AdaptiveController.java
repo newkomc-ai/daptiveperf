@@ -156,12 +156,12 @@ public class AdaptiveController {
         resetSamples();
     }
 
-    public void toggle(MinecraftClient mc) {
-        config.enabled = !config.enabled;
+    public void setEnabled(MinecraftClient mc, boolean enabled) {
+        config.enabled = enabled;
         config.save();
-        if (!config.enabled) restore(mc);
+        if (!enabled) restore(mc);
         if (mc.player != null) {
-            mc.player.sendMessage(Text.literal("Adaptive Performance: " + (config.enabled ? "увімкнено" : "вимкнено")), true);
+            mc.player.sendMessage(Text.literal("Adaptive Performance: " + (enabled ? "увімкнено" : "вимкнено")), true);
         }
     }
 

@@ -22,7 +22,7 @@ public class AdaptivePerfClient implements ClientModInitializer {
         AdaptiveController controller = new AdaptiveController(config);
 
         toggleKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-                "key.adaptiveperf.toggle",
+                "key.adaptiveperf.menu",
                 InputUtil.Type.KEYSYM,
                 GLFW.GLFW_KEY_K,
                 "category.adaptiveperf"
@@ -30,7 +30,9 @@ public class AdaptivePerfClient implements ClientModInitializer {
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             while (toggleKey.wasPressed()) {
-                controller.toggle(client);
+                if (client.currentScreen == null) {
+                    client.setScreen(new SettingsScreen(null, config, controller));
+                }
             }
             controller.tick(client);
         });
